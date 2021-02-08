@@ -14,7 +14,7 @@ cur.execute('DROP TABLE IF EXISTS Employee')
 
 con.commit()
 
-# Create the Agent table
+# Create the Employee table
 cur.execute('''CREATE TABLE Employee (
     EmployeeId INTEGER PRIMARY KEY AUTOINCREMENT,
     Username TEXT NOT NULL,
