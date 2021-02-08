@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="title-2">
+    <b>Employee Database</b>
+    <br>
+    <b>Login</b>
+</div>
+
+<br>
+
+<div class="flex-container">
+
+    <div class="flex-contents">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+
+        <form action="{{ url_for('log_in') }}" method="POST">
+            <input type="text" id="username" name="username" placeholder="username">
+            <br>
+            <input type="password" id="password" name="password" placeholder="password">
+            <br>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

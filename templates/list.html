@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Employees</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body data-gr-c-s-loaded="true">
+
+{% if session.get('logged_in') %}
+    {% if session.get('level') == 1 or session.get('level') == 2 %}
+
+        <div class="title-2">
+            <b>All Employees:</b>
+        </div>
+
+        <div class="flex-container">
+
+            <div class="flex-contents-list">
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Employee ID</td>
+                        <td>UserName</td>
+                        <td>FirstName</td>
+                        <td>LastName</td>
+                        <td>Security Level</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for row in rows %}
+                        <tr>
+                            <td>{{ row["EmployeeId"] }}</td>
+                            <td>{{ row["UserName"] }}</td>
+                            <td>{{ row["FirstName"] }}</td>
+                            <td>{{ row["LastName"] }}</td>
+                            <td> {{ row["SecurityLevel"] }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                <h2>
+                    <a href="/">Go back to home page</a>
+                </h2>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+</body>
+</html>

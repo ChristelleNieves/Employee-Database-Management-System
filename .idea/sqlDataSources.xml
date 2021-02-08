@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="71b1dda2-96a6-441c-9954-d0969a5427b6" />
+          <option name="name" value="data.db" />
+          <option name="urls">
+            <array />
+          </option>
+        </State>
+        <State>
+          <option name="id" value="592dd86a-acb8-4775-a73b-21569c324633" />
+          <option name="name" value="DDL data source" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/data.db" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body data-gr-c-s-loaded="true">
+{% if session.get('logged_in') %}
+
+    <div class="title-2">
+        <b>Query Results:</b>
+    </div>
+
+    <div class="flex-container">
+
+        <div class="flex-contents">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %}
+
+            <h2>
+                <a href="/">back to home </a>
+            </h2>
+
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>

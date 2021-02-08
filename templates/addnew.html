@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+{% if session.get('logged_in') %}
+    {% if session.get('level') == 1 %}
+        <div class="title-2">
+            <b>Add Employee</b>
+        </div>
+
+        <div class="flex-container">
+
+            <div class="flex-contents">
+
+                <form action="{{ url_for('enter_new') }}" method="POST">
+                    <input type="text" id="username" name="username" placeholder="username">
+                    <br>
+                    <input type="text" id="firstname" name="firstname" placeholder="first name">
+                    <br>
+                    <input type="text" id="lastname" name="lastname" placeholder="last name">
+                    <br>
+                    <input type="text" id="level" name="level" placeholder="secret clearance level">
+                    <br>
+                    <input type="password" id="pass" name="pass" placeholder="password">
+                    <br>
+
+                    <button type="submit">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+    {% endif %}
+{% endif %}
+
+</body>
+</html>
