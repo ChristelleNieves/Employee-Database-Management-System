@@ -1,4 +1,4 @@
-# Employee-Database-Website
+# Employee-Database-Management-System
 
 A small-scale flask application that represents an employee database management system using SQLite3.<br>
 Incorporates user authentication and role-based access for users.<br>
