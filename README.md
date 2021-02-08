@@ -1,5 +1,14 @@
 # Employee-Database-Website
 
+A small-scale flask application that represents an employee database management system.<br>
+Incorporates user authentication and role-based access for users.<br>
+The user has the ability to log in and according to their security level (1, 2, 3) they will be granted different permissions within the site.<br>
+Users with security level 1 represent admin users and have the ability to add/remove employees from the database.<br>
+Users with security level 2 have the ability to view all employees but cannot add/remove employees.<br>
+Users with security level 3+ do not have permissions to add/remove or view employees in the database.<br>
+<br>
+If you decide to test the application on your own machine, the test login is: username = Test, password = password<br>
+
 
 <img width="941" alt="login" src="https://user-images.githubusercontent.com/29238419/107166284-8c469400-6983-11eb-8359-dacce3b670f8.png">
 <br>
