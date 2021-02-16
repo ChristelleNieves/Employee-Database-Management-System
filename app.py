@@ -5,6 +5,7 @@ import os
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import sqlite3
 import setup
+import Encryption
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
@@ -28,7 +29,10 @@ def log_in():
         try:
             # Store the username and password
             username = request.form['username']
-            password = request.form['password']
+            password = bytes(request.form['password'], encoding='utf-8')
+
+            # Encrypt the password
+            encrypted_pwd = str(Encryption.cipher.encrypt(password).decode('utf-8'))
 
             # Connect to the database
             with sqlite3.connect('data.db') as con:
@@ -37,7 +41,7 @@ def log_in():
 
                 # Run a query to find the username and password in the Employee table
                 query = '''SELECT * FROM Employee WHERE UserName = ? AND LoginPassword = ?'''
-                cur.execute(query, (username, password))
+                cur.execute(query, (username, encrypted_pwd))
 
                 row = cur.fetchone()
 
@@ -48,7 +52,7 @@ def log_in():
 
                     # Get the security level of the user
                     query = '''SELECT SecurityLevel FROM Employee WHERE UserName = ? AND LoginPassword = ?'''
-                    cur.execute(query, (username, password))
+                    cur.execute(query, (username, encrypted_pwd))
 
                     # Set the security level as a session variable "level"
                     level = cur.fetchone()[0]
@@ -56,7 +60,7 @@ def log_in():
 
                     # Get the first name of the user
                     query = '''SELECT FirstName FROM Employee WHERE UserName = ? AND LoginPassword = ?'''
-                    cur.execute(query, (username, password))
+                    cur.execute(query, (username, encrypted_pwd))
 
                     # Set the first name as a session variable
                     first_name = cur.fetchone()[0]
@@ -192,6 +196,9 @@ def enter_new():
                 flash("Security level must be a number between 1 and 10 inclusive.")
                 valid = False
 
+            # Encrypt the password
+            encrypted_pwd = str(Encryption.cipher.encrypt(bytes(password, encoding='utf-8')).decode('utf-8'))
+
             # Connect to the database
             cur = con.cursor()
 
@@ -199,7 +206,7 @@ def enter_new():
             if valid:
                 cur.execute("INSERT INTO Employee(UserName, FirstName, LastName, SecurityLevel, LoginPassword) "
                             "VALUES (?,?,?,?,?)",
-                            (username, firstname, lastname, level, password))
+                            (username, firstname, lastname, level, encrypted_pwd))
 
                 con.commit()
 
