@@ -1,7 +1,7 @@
 # Employee-Database-Management-System
 
 A small-scale flask application that represents an employee database management system using SQLite3.<br>
-Incorporates user authentication and role-based access for users.<br>
+Incorporates user authentication, role-based access for users, and password encryption.<br>
 The user has the ability to log in and according to their security level (1, 2, 3) they will be granted different permissions within the site.<br>
 Users with security level 1 represent admin users and have the ability to add/remove employees from the database.<br>
 Users with security level 2 have the ability to view all employees but cannot add/remove employees.<br>
